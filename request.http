@@ -1,0 +1,120 @@
+
+/*USUARIOS CRUD PRUEBA*/
+###
+POST http://localhost:8000/api/user/create HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "fernan",
+    "email": "fernan@gmail.com",
+    "password": "fer123"
+}
+
+###
+POST http://localhost:8000/api/user/auth HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "fer",
+    "password": "$2b$10$fI.cePNvvAF7E0RNV0XlG.7BI0WO9vwlgw6fEKXTg4mEMGKHLvfp6"
+}
+
+###
+GET http://localhost:8000/api/user/getAll HTTP/1.1
+
+###
+GET http://localhost:8000/api/user/getById/1 HTTP/1.1
+
+###
+GET http://localhost:8000/api/user/getByUsername/fer HTTP/1.1
+
+###
+PUT http://localhost:8000/api/user/update/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "ferna",
+    "password": "fer1234"
+}
+
+###
+DELETE http://localhost:8000/api/user/delete/2 HTTP/1.1
+
+
+/*room_type*/
+###
+POST http://localhost:8000/api/roomType/create HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Grupal"
+}
+
+###
+GET http://localhost:8000/api/roomType/getAll HTTP/1.1
+
+/*room*/
+###
+POST http://localhost:8000/api/room/create HTTP/1.1
+Content-Type: application/json
+
+{
+    "room_name": "prueba estadias",
+    "room_type_id": 2
+}
+
+###
+GET http://localhost:8000/api/room/getAll HTTP/1.1
+
+###
+DELETE http://localhost:8000/api/room/delete/1 HTTP/1.1
+
+/*room_user*/
+###
+POST http://localhost:8000/api/roomUser/create HTTP/1.1
+Content-Type: application/json
+
+{
+    "room_id": 3,
+    "user_id": 4
+}
+
+###
+GET http://localhost:8000/api/roomUser/getAll/2 HTTP/1.1
+
+###
+get http://localhost:8000/api/roomUser/getAll/room/4 HTTP/1.1
+
+###
+DELETE http://localhost:8000/api/roomUser/delete/1 HTTP/1.1
+
+/*message_type*/
+###
+POST http://localhost:8000/api/messageType/create HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Imagen"
+}
+
+###
+GET http://localhost:8000/api/messageType/getAll HTTP/1.1
+
+/*message*/
+###
+POST http://localhost:8000/api/message/create HTTP/1.1
+Content-Type: application/json
+
+{
+    "room_id": 4,
+    "user_id": 1,
+    "message_type_id": 1,
+    "message": "Hola prueba",
+    "url": ""
+}
+
+###
+GET http://localhost:8000/api/message/getAll HTTP/1.1
+
+###
+GET http://localhost:8000/api/message/getAll/room/3 HTTP/1.1
