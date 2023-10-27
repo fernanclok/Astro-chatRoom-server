@@ -31,15 +31,19 @@ const messageModel = {
 
     getAllRoomMessages: async (roomId) => {
         return new Promise((resolve, reject) => {
-            db.all("SELECT * FROM message WHERE room_id = ?", [roomId], (err, rows) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(rows);
-                }
-            });
+          db.all(
+            "SELECT message.*, users.username FROM message INNER JOIN users ON message.user_id = users.user_id WHERE message.room_id = ?",
+            [roomId],
+            (err, rows) => {
+              if (err) {
+                reject(err);
+              } else {
+                resolve(rows);
+              }
+            }
+          );
         });
-    },
+      },
 
     getAllUserRoomMessages: async (roomId, userId) => {
         return new Promise((resolve, reject) => {
